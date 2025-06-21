@@ -1,0 +1,11 @@
+<?php
+include 'database.php';
+
+if (isset($_POST['id'])) {
+$stmt = $db->prepare("DELETE FROM tarefas WHERE id = :id");
+$stmt->bindValue(':id', $_POST['id'], SQLITE3_INTEGER);
+$stmt->execute();
+}
+header("Location: index.php");
+exit;
+?>
